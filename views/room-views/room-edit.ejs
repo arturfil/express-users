@@ -1,0 +1,20 @@
+<h2> Edit Room </h2>
+
+<form action="/rooms/<%= roomInfo._id %>" method="post">
+  <label for="room-name-input"> Room Name </label>
+  <br>
+  <input id="room-name-input" type="text" name="roomName" placeholder="Room Name" value="<%= roomInfo.name %>">
+  <br>
+
+  <label for="photo-input">Photo URL</label>
+  <br>
+  <input id="photo-input" type="text" name="roomPhoto" placeholder="...photo.jpg" value="<%= roomInfo.photoUrl %>">
+  <br>
+
+  <label for="desc-input"> Description</label>
+  <br>
+  <textarea id="desc-input"type="text" name="roomDescription" placeholder="Beautiful room with..."><%= roomInfo.desc %></textarea>
+  <br>
+  <br>
+  <button> Save Room </button>
+</form>

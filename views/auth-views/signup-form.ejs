@@ -1,0 +1,24 @@
+<h2> Sign Up </h2>
+
+<form id="form" action="/process-signup" method="post">
+<% if (typeof feedbackMessage !== 'undefined') { %>
+    <p class="error-message"> <%= feedbackMessage %> </p>
+<%  } %>
+  <label for="email-input">email</label>
+  <br>
+  <input id="email-input" type="text" name="signupEmail" value="" placeholder="irma@hurricanes.weather">
+  <br>
+
+  <label for="password-input">password</label>
+  <br>
+  <input id="password-input" type="password" name="signupPassword" value="" placeholder="password">
+  <br>
+  <br>
+
+  <button>Sign Up</button>
+</form>
+<br>
+
+<a href="/auth/facebook">
+  Log In with Facebook
+</a>

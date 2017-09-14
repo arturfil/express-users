@@ -1,0 +1,38 @@
+<h2> Log In </h2>
+<%  if(logoutFeedback.length > 0) { %>
+    <p class="success-message"> <%= logoutFeedback %> </p>
+  <% } %>
+
+  <%  if(securityFeedback.length > 0) { %>
+      <p class="error-message"> <%= securityFeedback %> </p>
+    <% } %>
+
+
+
+<form id="form" action="/process-login" method="post">
+<%  if(flashError.length > 0) { %>
+    <p class="error-message"> <%= flashError %> </p>
+  <% } %>
+
+  <label for="email-input">email</label>
+  <br>
+  <input id="email-input" type="text" name="loginEmail" value="" placeholder="irma@hurricanes.weather">
+  <br>
+
+  <label for="password-input">password</label>
+  <br>
+  <input id="password-input" type="password" name="loginPassword" value="" placeholder="password">
+  <br>
+  <br>
+
+  <button>Log In</button>
+</form>
+<br>
+<a href="/auth/facebook">
+  Log In with Facebook
+</a>
+<br>
+
+<a href="/auth/google">
+  Log In with Google
+</a>
