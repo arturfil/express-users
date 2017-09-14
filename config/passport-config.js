@@ -126,8 +126,8 @@ const GoogleStratey = require('passport-google-oauth').OAuth2Strategy;
 passport.use(
   new GoogleStratey(
     {
-      clientID: proccess.env.google_app_id,
-      clientSecret: proccess.env.google_app_secret,
+      clientID: process.env.google_app_id,
+      clientSecret: process.env.google_app_secret,
       callbackURL: '/auth/google/callback'
     },
     (accesToken, resfreshToke, profile, done) => {

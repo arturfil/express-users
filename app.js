@@ -16,8 +16,8 @@ require('dotenv').config();
 
 require('./config/passport-config.js');
 
-// 'MONGODB_URI' is defined in the .env file 
-mongoose.connect(procces.env.MONGODB_URI);
+// 'MONGODB_URI' is defined in the .env file
+mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
 
