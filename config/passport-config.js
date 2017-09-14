@@ -76,9 +76,9 @@ passport.use(
     // 1st arg -> settings object
     {
         // App ID = Client ID
-        clientID: '473604799690267',
+        clientID: process.env.fb_app_id, //----> defined in the .env file
         // clientSecret = App Secret
-        clientSecret: '144df4d95d093919527850e235efa4df',
+        clientSecret: process.env.fb_app_secret,
         callbackURL: '/auth/facebook/callback'
     },
     //2nd arg, -> callback
@@ -126,8 +126,8 @@ const GoogleStratey = require('passport-google-oauth').OAuth2Strategy;
 passport.use(
   new GoogleStratey(
     {
-      clientID: '615170859346-0l2l20uou7u1enlp5i62lqksna9t2k2o.apps.googleusercontent.com',
-      clientSecret: '94uROx2EpgT66APvuaZ6acx6',
+      clientID: proccess.env.google_app_id,
+      clientSecret: proccess.env.google_app_secret,
       callbackURL: '/auth/google/callback'
     },
     (accesToken, resfreshToke, profile, done) => {
