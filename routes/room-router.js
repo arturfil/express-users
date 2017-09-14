@@ -73,6 +73,11 @@ router.get('/my-rooms', (req, res, next) => {
 });
 
 router.get('/rooms/:roomId/edit', (req, res, next) => {
+  if(req.user === undefined) {
+    req.flash('securityError', 'Log in to edit a room')
+    res.redirect('/login');
+    return;
+  }
   RoomModel.findById(
     req.params.roomId,
     (err, roomFromDb) => {
@@ -94,7 +99,14 @@ router.get('/rooms/:roomId/edit', (req, res, next) => {
   );
 });
 
-router.post('/rooms/:roomId', (req, res, next) => {
+router.post('/rooms/:roomId',
+  myUploader.single('roomPhoto'),
+ (req, res, next) => {
+   if(req.user === undefined) {
+     req.flash('securityError', 'Log in to add a room')
+     res.redirect('/login');
+     return;
+   }
   RoomModel.findById(
     req.params.roomId,
     (err, roomFromDb) => {
@@ -110,11 +122,16 @@ router.post('/rooms/:roomId', (req, res, next) => {
       }
 
       roomFromDb.name = req.body.roomName;
-      roomFromDb.photoUrl = req.body.roomPhoto;
+      // roomFromDb.photoUrl = req.body.roomPhoto;
       roomFromDb.desc = req.body.roomDescription;
+
+      if (req.file) {
+        roomFromDb.photoUrl = '/uploads/' + req.file.filename;
+      }
 
       roomFromDb.save((err) => {
         if(err) {
+          console.log(err);
           next(err);
           return;
         }
