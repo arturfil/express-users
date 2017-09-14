@@ -31,5 +31,5 @@ npm-debug.log
 
 public/uploads
 
-#ignore ourfile fill of secrets
+#ignore our file fill of secrets
 .env

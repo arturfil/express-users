@@ -128,7 +128,8 @@ passport.use(
     {
       clientID: process.env.google_app_id,
       clientSecret: process.env.google_app_secret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/auth/google/callback',
+      proxy: true
     },
     (accesToken, resfreshToke, profile, done) => {
       console.log('Google user info:');
